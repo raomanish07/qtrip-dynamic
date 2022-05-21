@@ -43,7 +43,6 @@ function addCityToDOM(id, city, description, image) {
                         </div>
                       </div>
                     </a>`
-
   containerDiv.innerHTML=innerHtmlElm;
   document.getElementById('data').appendChild(containerDiv)
   

@@ -5,6 +5,10 @@ import config from "../conf/index.js";
 function getCityFromURL(search) {
   // TODO: MODULE_ADVENTURES
   // 1. Extract the city id from the URL's Query Param and return it
+      const urlParams = new URLSearchParams(search);
+      const city = urlParams.get('city')
+      return city;
+
 
 }
 
@@ -12,6 +16,15 @@ function getCityFromURL(search) {
 async function fetchAdventures(city) {
   // TODO: MODULE_ADVENTURES
   // 1. Fetch adventures using the Backend API and return the data
+  try {
+    const response = await fetch(config.backendEndpoint+`/adventures/?city=${city}`);
+    const adventures = await response.json();
+    return adventures;
+  } catch (error) {
+    console.log('Fetch error: ', error);
+    return null;
+  }
+
 
 }
 
@@ -19,6 +32,33 @@ async function fetchAdventures(city) {
 function addAdventureToDOM(adventures) {
   // TODO: MODULE_ADVENTURES
   // 1. Populate the Adventure Cards and insert those details into the DOM
+  
+  //const [category,costPerHead,currency,duration,id,image,name] = element;
+  adventures.forEach(element => {
+    let containerDiv=document.createElement('div');
+    containerDiv.className ="col-6 col-sm-6 col-lg-3 mb-4";
+    let innerHtmlElm=`<a id="${element.id}" href="detail/?adventure=${element.id}">
+                        <div class="activity-card">
+                          <p class="category-banner">${element.category}</p>
+                          <img src="${element.image}"/>
+                          <div class="mt-3" style="display: flex;width: 100%;justify-content: space-around;align-items:center;">
+                            <p>${element.name}</p>
+                            <p>${element.currency =="INR"?"₹":"$"}${element.costPerHead}</p>
+                          </div>
+                          <div style="display: flex;width: 100%;justify-content: space-around;align-items:center;">
+                            <p>Duration</p>
+                            <p>${element.duration} Hours</p>
+                          </div>
+                        </div>
+                      </a>`
+    containerDiv.innerHTML=innerHtmlElm;
+    document.getElementById('data').appendChild(containerDiv)
+    
+    
+ });
+ 
+    
+    
 
 }
 
