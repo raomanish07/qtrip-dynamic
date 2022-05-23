@@ -1,10 +1,8 @@
 import config from "../conf/index.js";
 
 async function init() {
-  console.log("from init")
   //Fetches list of all cities along with their images and description
   let cities = await fetchCities();
-  console.log(cities)
 
   //Updates the DOM with the cities
   cities.forEach((key) => {
@@ -22,7 +20,7 @@ async function fetchCities() {
     const cities = await response.json();
     return cities;
   } catch (error) {
-    console.log('Fetch error: ', error);
+    //console.log('Fetch error: ', error);
     return null;
   }
 

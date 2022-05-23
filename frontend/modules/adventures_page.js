@@ -21,7 +21,7 @@ async function fetchAdventures(city) {
     const adventures = await response.json();
     return adventures;
   } catch (error) {
-    console.log('Fetch error: ', error);
+    //console.log('Fetch error: ', error);
     return null;
   }
 
