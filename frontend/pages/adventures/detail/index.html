@@ -121,7 +121,6 @@
         (async function () {
             let adventureId = await getAdventureIdFromURL(window.location.search);
             let adventureDetails = await fetchAdventureDetails(adventureId);
-            console.log(adventureDetails)
             addAdventureDetailsToDOM(adventureDetails);
             addBootstrapPhotoGallery(adventureDetails.images);
             conditionalRenderingOfReservationPanel(adventureDetails);
