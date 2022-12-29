@@ -1,5 +1,4 @@
 import config from "../conf/index.js";
-
 async function init() {
   //Fetches list of all cities along with their images and description
   let cities = await fetchCities();
@@ -25,7 +24,6 @@ async function fetchCities() {
   }
 
 }
-
 //Implementation of DOM manipulation to add cities
 function addCityToDOM(id, city, description, image) {
   // TODO: MODULE_CITIES
@@ -42,12 +40,7 @@ function addCityToDOM(id, city, description, image) {
                       </div>
                     </a>`
   containerDiv.innerHTML=innerHtmlElm;
-  document.getElementById('data').appendChild(containerDiv)
-  
-
-
-
-
+  document.getElementById('data').appendChild(containerDiv);
 }
 
 export { init, fetchCities, addCityToDOM };
